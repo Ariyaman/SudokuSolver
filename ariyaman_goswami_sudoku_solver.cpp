@@ -9,11 +9,13 @@ using namespace std;
         vector<vector<int>> answer;
     
         bool isValidMove(vector<vector<int>>& board, int row, int col, int number) {
+            // check row wise for element with same value
             for (int i = 0; i <= 8; ++i) {
                 if (board[row][i] == number)
                 return false;
             }
-     
+
+            // check column wise for element with same value 
             for (int i = 0; i <= 8; ++i) {
                 if (board[i][col] == number)
                     return false;
@@ -21,7 +23,8 @@ using namespace std;
             
             int row_increment = row - (row % 3);
             int col_increment = col - (col % 3);
-       
+
+            // check for element in its box's diagnols
             for (int i = 0; i < 3; i++) {        
                 for (int j = 0; j < 3; j++) {
                     if (board[i + row_increment][j + col_increment] == number)
